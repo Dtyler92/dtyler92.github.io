@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tourbillion LLC | Solar Consultation</title>
+  <meta name="description" content="Tourbillion LLC partners with Palmetto Solar to help homeowners explore solar savings with a quick, no-pressure consultation." />
+    <meta name="facebook-domain-verification" content="w5mwz1ve3a9wzb39n04date6hl76gy" />
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '873149912409063');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=873149912409063&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a32;
+      --card: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.14);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --accent:#f4a261;
+      --accent2:#35d0ba;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 0%, #1a2f63 0%, var(--bg) 55%),
+        radial-gradient(900px 600px at 90% 20%, rgba(53,208,186,.20) 0%, rgba(11,18,32,0) 55%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:26px}
+
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:6px 0 18px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;}
+    .brand img{
+      width:56px;height:56px;border-radius:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      object-fit:contain;
+      padding:6px;
+    }
+    .brand .text strong{display:block;font-size:1.05rem;letter-spacing:.2px}
+    .brand .text span{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+
+    .rightbar{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      min-width: 240px;
+    }
+    .contactline{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .contactline a{
+      text-decoration:none;
+      border-bottom: 1px dashed rgba(255,255,255,.28);
+    }
+
+    .nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+    .pill{
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-weight:700;
+      font-size:.92rem;
+    }
+    .pill.primary{
+      background:var(--accent);
+      border-color:rgba(244,162,97,.9);
+      color:#1b1209;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:2.15rem;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:1.03rem;
+    }
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0;}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      font-weight:700;font-size:.9rem;
+    }
+    .badge svg{opacity:.95}
+
+    .bullets{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+    .bullets li{display:flex;gap:10px;align-items:flex-start}
+    .check{
+      width:20px;height:20px;flex:0 0 20px;border-radius:7px;
+      background:rgba(53,208,186,.18);
+      border:1px solid rgba(53,208,186,.35);
+      display:grid;place-items:center;
+      color:var(--accent2);font-weight:900;margin-top:2px;
+    }
+
+    .lead{background:linear-gradient(180deg, rgba(244,162,97,.14), rgba(255,255,255,.05));}
+    .lead h2{margin:0 0 6px;font-size:1.22rem}
+    .lead p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+
+    label{display:block;margin:10px 0 6px;color:var(--muted);font-size:.9rem}
+    input, textarea, select{
+      width:100%;padding:12px;border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(8,12,24,.55);
+      color:var(--text);outline:none;
+    }
+    textarea{min-height:92px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{
+      width:100%;margin-top:12px;
+      padding:12px 14px;border-radius:14px;border:none;
+      font-weight:900;cursor:pointer;
+      background:var(--accent);color:#1b1209;
+      font-size:1rem;
+    }
+    .fine{
+      margin-top:10px;
+      color:rgba(238,242,255,.62);
+      font-size:.82rem;
+    }
+
+    .section{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:14px;
+    }
+    .mini h3{margin:0 0 8px;font-size:1.02rem}
+    .mini p{margin:0;color:var(--muted);font-size:.95rem}
+    .mini .icon{
+      width:44px;height:44px;border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      display:grid;place-items:center;margin-bottom:10px;
+    }
+
+    .content{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:14px;
+    }
+    .content h2{margin:0 0 10px;font-size:1.35rem}
+    .content p{margin:0 0 10px;color:var(--muted)}
+    .callout{
+      border-left:3px solid rgba(244,162,97,.85);
+      padding:10px 12px;
+      background:rgba(244,162,97,.08);
+      border-radius:12px;
+      color:rgba(238,242,255,.86);
+    }
+
+    .faq{margin-top:14px}
+    details{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 14px;
+      margin:10px 0;
+    }
+    summary{cursor:pointer;font-weight:800}
+    details p{margin:10px 0 0;color:var(--muted)}
+
+    footer{
+      margin:18px 0 6px;
+      color:rgba(238,242,255,.62);
+      font-size:.85rem;
+    }
+
+    .sticky{
+      position:fixed;left:0;right:0;bottom:0;
+      padding:12px;background:rgba(11,18,32,.82);
+      border-top:1px solid var(--border);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index: 20;
+    }
+    .sticky a{
+      display:block;text-align:center;text-decoration:none;
+      padding:12px 14px;border-radius:14px;
+      background:var(--accent);
+      color:#1b1209;font-weight:900;
+    }
+
+    /* ---- Modal (Renter Video) ---- */
+    .modalOverlay{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:rgba(0,0,0,.65);
+      z-index: 50;
+
+      opacity: 0;
+      transition: opacity 280ms ease;
+    }
+    .modalOverlay.show{ opacity: 1; }
+
+    .modal{
+      width:min(920px, 100%);
+      background:rgba(15,26,50,.96);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modalHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .closeBtn{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .videoWrap{
+      position:relative;
+      width:100%;
+      aspect-ratio: 16 / 9;
+      background:#000;
+
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 420ms ease, transform 420ms ease;
+    }
+    .modalOverlay.show .videoWrap{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .videoWrap iframe{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      border:0;
+    }
+
+    .unmuteOverlay{
+      position:absolute; inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.15));
+    }
+    .unmuteBtn{
+      border:none;
+      border-radius:14px;
+      padding:12px 14px;
+      background:var(--accent);
+      color:#1b1209;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow: var(--shadow);
+    }
+    .unmuteHint{
+      display:block;
+      margin-top:8px;
+      text-align:center;
+      color:rgba(238,242,255,.85);
+      font-size:.9rem;
+    }
+
+    .modalFooter{
+      padding:14px 16px 18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+    }
+    .modalFooter p{ margin:0 0 10px; }
+    .ctaBtn{
+      display:inline-block;
+      text-decoration:none;
+      background:var(--accent);
+      color:#1b1209;
+      font-weight:900;
+      padding:12px 14px;
+      border-radius:14px;
+    }
+
+    @media(max-width:980px){
+      .topbar{flex-direction:column;align-items:flex-start}
+      .rightbar{align-items:flex-start;min-width:unset;width:100%}
+      .contactline{justify-content:flex-start}
+      .nav{justify-content:flex-start}
+      .hero{grid-template-columns:1fr}
+      .section{grid-template-columns:1fr}
+      .content{grid-template-columns:1fr}
+      h1{font-size:1.85rem}
+      .row{grid-template-columns:1fr}
+      .sticky{display:block}
+      body{padding-bottom:70px;}
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="6EC4B882-FBD0-4863-99FE-196F09A8E8DA.png" alt="Tourbillion Energy logo">
+        <div class="text">
+          <strong>Tourbillion LLC</strong>
+          <span>Partnered with Palmetto Solar</span>
+        </div>
+      </div>
+
+      <div class="rightbar">
+        <div class="contactline">
+          <span><strong>Email:</strong> <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a></span>
+          <span><strong>Phone:</strong> <a href="tel:+17176687720">717-668-7720</a></span>
+        </div>
+        <div class="nav">
+          <a class="pill" href="#how">How it works</a>
+          <a class="pill" href="#benefits">Benefits</a>
+          <a class="pill primary" href="#lead">Get a free estimate</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <h1>Explore solar savings with a quick, no-pressure consultation.</h1>
+        <p class="sub">
+          Tourbillion LLC helps homeowners understand whether solar makes sense for their home — with clear answers and a simple process.
+        </p>
+
+        <div class="badges">
+          <div class="badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l8 4v7c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Warranty-backed equipment
+          </div>
+          <div class="badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 7l3 3-8 8H6v-3l8-8z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 5l3 3" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Installation handled in-house
+          </div>
+          <div class="badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            Quick consult, clear next steps
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="check">✓</span><span><strong>Get the numbers first:</strong> we’ll review roof fit, usage, and incentives.</span></li>
+          <li><span class="check">✓</span><span><strong>No upfront cost options:</strong> explore programs that don’t require a big initial payment.</span></li>
+          <li><span class="check">✓</span><span><strong>Budget certainty:</strong> move away from unpredictable rate changes over time.</span></li>
+        </ul>
+      </div>
+
+      <div class="card lead" id="lead">
+        <h2>Request a free estimate</h2>
+        <p>
+          If you came from a Facebook/Instagram lead ad, submitting the form there is perfect.
+          If you prefer, you can leave your info here and we’ll contact you.
+        </p>
+
+        <form id="leadForm">
+          <!-- Honeypot field (spam trap): humans won't fill this -->
+          <div style="position:absolute; left:-5000px; opacity:0; height:0; overflow:hidden;">
+            <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <label for="occupancy">Are you a homeowner or renter?</label>
+          <select id="occupancy" name="occupancy" required>
+            <option value="" selected disabled>Select one…</option>
+            <option value="homeowner">Homeowner</option>
+            <option value="renter">Renter</option>
+          </select>
+
+          <label for="name">Full Name</label>
+          <input id="name" name="name" placeholder="John Smith" required />
+
+          <div class="row">
+            <div>
+              <label for="phone">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="numeric"
+                autocomplete="tel-national"
+                placeholder="(555) 555-5555"
+                required
+                maxlength="14"
+                pattern="^\(\d{3}\) \d{3}-\d{4}$"
+                title="Enter a valid US phone number: (555) 555-5555"
+              />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" required />
+            </div>
+          </div>
+
+          <label for="address">Home Address</label>
+          <input id="address" name="address" placeholder="123 Main St, City, State" />
+
+          <label for="zip">ZIP Code</label>
+          <input id="zip" name="zip" placeholder="12345" />
+
+          <label for="note">Anything we should know?</label>
+          <textarea id="note" name="note" placeholder="Example: best time to call, roof concerns, etc."></textarea>
+
+          <button class="btn" type="submit" id="submitBtn">Send my info</button>
+
+          <div class="fine">
+            By submitting, you agree Tourbillion LLC may contact you by call/text/email. Msg/data rates may apply.
+            This request is not a contract and carries no obligation.
+          </div>
+
+          <div id="thanks" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(53,208,186,.10);">
+            <strong>Thanks — we received your request ✅</strong>
+            <div id="thanksMsg" style="color:var(--muted);margin-top:4px;">
+              We’ll reach out to confirm details and answer questions.
+            </div>
+          </div>
+
+          <div id="errorBox" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid rgba(244,162,97,.5);background:rgba(244,162,97,.12);">
+            <strong>Hmm — something didn’t send.</strong>
+            <div style="color:var(--muted);margin-top:4px;">
+              Please try again, or contact us directly:
+              <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
+              <a href="tel:+17176687720">717-668-7720</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- More detailed info (bottom) -->
+    <div class="section">
+      <div class="card mini" id="about">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 22V2h10v20" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 9h6v13" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 6h4M7 10h4M7 14h4M7 18h4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Palmetto Solar overview</h3>
+        <p>
+          Palmetto Solar is an established solar company with regional presence and local support.
+          They are vertically integrated — meaning the work is handled directly rather than subcontracted out.
+        </p>
+      </div>
+
+      <div class="card mini">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14h7l-1 8 12-14h-7l-1-6z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>No-pressure process</h3>
+        <p>
+          We can do a quick virtual call or a short visit. If we schedule a brief meeting, it helps to have all decision-makers present
+          so everyone’s aligned and questions get answered once.
+        </p>
+      </div>
+
+      <div class="card mini">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12a9 9 0 1 1-2.6-6.4" stroke="currentColor" stroke-width="2"/>
+            <path d="M21 3v7h-7" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Credits & rollover</h3>
+        <p>
+          Your system generates power during the day. Excess energy can be sent to the grid for credits,
+          which you can use later when production is lower. Unused credits can roll over.
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="card" id="how">
+        <h2>How the program works</h2>
+        <p>
+          Solar panels generate electricity primarily during daylight hours. When your home produces more than it uses,
+          that excess can be exported to the grid and tracked as credits. Those credits can offset usage when the system
+          is producing less — evenings, cloudy periods, or higher-usage seasons.
+        </p>
+
+        <div class="callout">
+          <strong>Simple idea:</strong> produce in the day, use credits later — with a smoother bill over time.
+        </div>
+
+        <h2 style="margin-top:14px;">Cost structure</h2>
+        <p>
+          Many homeowners explore options with <strong>no upfront cost</strong>.
+          Instead of paying a utility rate that can change over time, you may pay a <strong>lower, fixed rate</strong> for
+          the electricity your panels produce — adding predictability and protection against future changes.
+        </p>
+      </div>
+
+      <div class="card" id="benefits">
+        <h2>Key benefits</h2>
+        <ul class="bullets" style="margin-top:0;">
+          <li><span class="check">✓</span><span>Protection from rising utility rates and long-term budget certainty</span></li>
+          <li><span class="check">✓</span><span>Immediate savings potential with no upfront investment options</span></li>
+          <li><span class="check">✓</span><span>No traditional loan or lien required for certain program types</span></li>
+          <li><span class="check">✓</span><span>Soft credit check may be used mainly to confirm payment history</span></li>
+          <li><span class="check">✓</span><span>Ability to add battery storage later if grid reliability becomes a concern</span></li>
+          <li><span class="check">✓</span><span>Long-term equipment coverage (panels, wiring, inverter) depending on plan</span></li>
+        </ul>
+
+        <div class="callout" style="margin-top:12px;">
+          Utility “price to compare” generation rates have trended upward over the past several years.
+          While that’s not the entire bill, it’s a meaningful driver — and it changes with market and regulatory conditions.
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);">
+          We can walk through a practical comparison using your usage and recent bills during a short consult.
+        </p>
+      </div>
+    </div>
+
+    <div class="card faq">
+      <h2 style="margin:0 0 10px;">Common questions</h2>
+
+      <details>
+        <summary>Is this a contract?</summary>
+        <p>No. This is simply a request for information and a consultation.</p>
+      </details>
+
+      <details>
+        <summary>Do you subcontract the install?</summary>
+        <p>Palmetto Solar is vertically integrated, meaning installation and workmanship are handled directly under their process and coverage.</p>
+      </details>
+
+      <details>
+        <summary>What if I’m not sure solar makes sense?</summary>
+        <p>That’s the point of the consult. If the numbers don’t make sense for your home, we’ll tell you.</p>
+      </details>
+
+      <details>
+        <summary>Should spouses/decision makers be present?</summary>
+        <p>It helps. If we schedule a short call or visit, having everyone present keeps things aligned and avoids repeating the same answers later.</p>
+      </details>
+    </div>
+
+    <footer>
+      © 2026 Tourbillion LLC. Partnered with Palmetto Solar. Savings vary by home, utility rates, system design, and incentives.
+      This page is for information and lead generation only.
+    </footer>
+  </div>
+
+  <div class="sticky">
+    <a href="#lead">Get a free estimate</a>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="modalOverlay" id="videoOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Renter Info Video">
+      <div class="modalHeader">
+        <strong>Renters: Here’s a quick way to lower your electric bill</strong>
+        <button class="closeBtn" type="button" id="closeVideoBtn">Close ✕</button>
+      </div>
+
+      <div class="videoWrap">
+        <iframe
+          id="ytFrame"
+          title="Renter video"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+        </iframe>
+
+        <div class="unmuteOverlay" id="unmuteOverlay">
+          <div style="text-align:center;">
+            <button type="button" class="unmuteBtn" id="unmuteBtn">Tap to unmute 🔊</button>
+            <span class="unmuteHint">Audio starts when you tap (browser requirement).</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modalFooter">
+        <p>Tap below to get started:</p>
+        <a class="ctaBtn" href="https://get.thinkenergy.com/Tourbillon" target="_blank" rel="noopener">Lower my electric bill</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ✅ Paste your actual Apps Script Web App /exec URL here:
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwgJ1czBkad75OXkxhkXd401qD2h5IRkfkOzVSQWA8JfIlcCFHXYquHUJ5AdJ_S_JUI/exec";
+
+  // YouTube renter video
+  const YT_ID = "3u5DALLHZDI";
+  const YT_EMBED_MUTED = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`;
+
+  // -----------------------------
+// ✅ US Phone: strict validation + formatting
+// Rules enforced:
+// - US-only (10 digits)
+// - Area code first digit 2–9
+// - Exchange (middle 3) first digit 2–9
+// - Auto-format to: (XXX) XXX-XXXX
+// - Block non-numeric keystrokes (while still allowing backspace/arrows/etc.)
+// -----------------------------
+
+function phoneDigits(raw) {
+  return (raw || "").replace(/\D/g, "");
+}
+
+function isValidUS10(digits) {
+  if (!digits || digits.length !== 10) return false;
+
+  // NANP rules (common enforcement):
+  // area code NXX where N=2–9
+  // central office (exchange) NXX where N=2–9
+  const a0 = digits.charCodeAt(0) - 48; // first digit
+  const e0 = digits.charCodeAt(3) - 48; // 4th digit
+  if (a0 < 2 || a0 > 9) return false;
+  if (e0 < 2 || e0 > 9) return false;
+
+  return true;
+}
+
+function formatUSPhone(digits) {
+  // digits: string of 0-10 digits
+  const d = (digits || "").slice(0, 10);
+  const a = d.slice(0, 3);
+  const b = d.slice(3, 6);
+  const c = d.slice(6, 10);
+
+  if (d.length <= 3) return a ? `(${a}` : "";
+  if (d.length <= 6) return `(${a}) ${b}`;
+  return `(${a}) ${b}-${c}`;
+}
+
+// Allow only digits + navigation/edit keys
+function isAllowedKey(e) {
+  if (e.ctrlKey || e.metaKey) return true; // allow copy/paste/select all
+  const k = e.key;
+
+  // allow navigation/edit keys
+  const allowed = [
+    "Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown",
+    "Home", "End", "Tab", "Enter"
+  ];
+  if (allowed.includes(k)) return true;
+
+  // allow digits only
+  return /^[0-9]$/.test(k);
+}
+  const form = document.getElementById("leadForm");
+  const thanks = document.getElementById("thanks");
+  const thanksMsg = document.getElementById("thanksMsg");
+  const errorBox = document.getElementById("errorBox");
+  const submitBtn = document.getElementById("submitBtn");
+  const errorMsgEl = document.querySelector("#errorBox div");
+
+  // ✅ Phone input behavior
+const phoneEl = document.getElementById("phone");
+
+phoneEl.addEventListener("keydown", (e) => {
+  if (!isAllowedKey(e)) e.preventDefault();
+});
+
+// Handles typing, paste, autofill, mobile input, etc.
+phoneEl.addEventListener("input", () => {
+  const d = phoneDigits(phoneEl.value);
+  phoneEl.value = formatUSPhone(d);
+});
+
+// Extra paste cleanup (optional but nice)
+phoneEl.addEventListener("paste", (e) => {
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData("text") || "";
+  const d = phoneDigits(text).slice(0, 10);
+  phoneEl.value = formatUSPhone(d);
+});
+  
+  // Modal elements
+  const videoOverlay = document.getElementById("videoOverlay");
+  const ytFrame = document.getElementById("ytFrame");
+  const closeVideoBtn = document.getElementById("closeVideoBtn");
+  const unmuteOverlay = document.getElementById("unmuteOverlay");
+  const unmuteBtn = document.getElementById("unmuteBtn");
+
+  function inEasternWindow9to9() {
+    // Determine current hour in America/New_York without external libs
+    try {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York",
+        hour: "numeric",
+        hour12: false
+      }).formatToParts(new Date());
+      const hour = Number(parts.find(p => p.type === "hour").value);
+      return hour >= 9 && hour < 21;
+    } catch (e) {
+      // Fallback: use local time (still usually Eastern for you)
+      const hour = new Date().getHours();
+      return hour >= 9 && hour < 21;
+    }
+  }
+
+  function openVideoModal() {
+    ytFrame.src = YT_EMBED_MUTED;
+    videoOverlay.style.display = "flex";
+    requestAnimationFrame(() => videoOverlay.classList.add("show"));
+    videoOverlay.setAttribute("aria-hidden", "false");
+    unmuteOverlay.style.display = "flex";
+  }
+
+  function closeVideoModal() {
+    videoOverlay.classList.remove("show");
+    videoOverlay.setAttribute("aria-hidden", "true");
+    setTimeout(() => {
+      videoOverlay.style.display = "none";
+      ytFrame.src = "";
+    }, 220);
+  }
+
+  closeVideoBtn.addEventListener("click", closeVideoModal);
+  videoOverlay.addEventListener("click", (e) => {
+    if (e.target === videoOverlay) closeVideoModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && videoOverlay.style.display === "flex") closeVideoModal();
+  });
+
+  // Tap to unmute + volume ramp
+  unmuteBtn.addEventListener("click", () => {
+    try {
+      ytFrame.contentWindow.postMessage(JSON.stringify({
+        event: "command",
+        func: "unMute",
+        args: []
+      }), "*");
+
+      let currentVolume = 10; // start gentle
+      ytFrame.contentWindow.postMessage(JSON.stringify({
+        event: "command",
+        func: "setVolume",
+        args: [currentVolume]
+      }), "*");
+
+      ytFrame.contentWindow.postMessage(JSON.stringify({
+        event: "command",
+        func: "playVideo",
+        args: []
+      }), "*");
+
+      const targetVolume = 60;
+      const step = 5;
+      const intervalMs = 150;
+
+      const rampInterval = setInterval(() => {
+        currentVolume += step;
+        ytFrame.contentWindow.postMessage(JSON.stringify({
+          event: "command",
+          func: "setVolume",
+          args: [currentVolume]
+        }), "*");
+
+        if (currentVolume >= targetVolume) clearInterval(rampInterval);
+      }, intervalMs);
+
+    } catch (_) {}
+
+    unmuteOverlay.style.display = "none";
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    thanks.style.display = "none";
+    errorBox.style.display = "none";
+
+    errorMsgEl.innerHTML = `Please try again, or contact us directly:
+      <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
+      <a href="tel:+17176687720">717-668-7720</a>`;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+
+    const occupancy = document.getElementById("occupancy").value;
+    const websiteTrap = document.getElementById("website").value.trim();
+    // ✅ Strict phone validation on submit
+const rawPhone = document.getElementById("phone").value;
+const digits = phoneDigits(rawPhone);
+
+// Make sure it is exactly valid US 10-digit with NANP rules
+if (!isValidUS10(digits)) {
+  errorBox.style.display = "block";
+  errorMsgEl.textContent =
+    "Please enter a valid US 10-digit phone number (example: (555) 555-5555).";
+  document.getElementById("phone").focus();
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Send my info";
+  return;
+}
+
+    // If bot filled honeypot, silently "succeed" but do nothing
+    if (websiteTrap) {
+      thanksMsg.textContent = "Thanks — we received your request ✅";
+      thanks.style.display = "block";
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send my info";
+      return;
+    }
+
+    // Renter flow: show video + CTA, DO NOT send to Apps Script
+    if (occupancy === "renter") {
+      openVideoModal();
+      // Also show a friendly confirmation (optional)
+      thanksMsg.textContent = "Thanks! Since you’re renting, here’s a quick option to lower your electric bill.";
+      thanks.style.display = "block";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send my info";
+      return;
+    }
+
+    // Homeowner flow: submit to Apps Script
+    const payload = new URLSearchParams({
+      website: websiteTrap,
+      occupancy: occupancy,
+      name: document.getElementById("name").value.trim(),
+      phone: digits,
+      email: document.getElementById("email").value.trim(),
+      address: document.getElementById("address").value.trim(),
+      zip: document.getElementById("zip").value.trim(),
+      note: document.getElementById("note").value.trim()
+    });
+
+    try {
+      const res = await fetch(scriptURL, { method: "POST", body: payload });
+      const text = await res.text();
+      const t = text.trim();
+
+      // If Apps Script returns HTML, it's usually deployment/access settings
+      if (t.startsWith("<!DOCTYPE") || t.startsWith("<html")) {
+        throw new Error("Apps Script returned an HTML page. Check deployment: Execute as 'Me' and access 'Anyone', then redeploy.");
+      }
+
+      let data = null;
+      try { data = JSON.parse(text); } catch (_) {}
+
+      if (res.ok && data && data.result === "success") {
+        const fastMsg = inEasternWindow9to9()
+          ? "We received your request ✅ You’ll receive a call or text within the next 5 minutes (9am–9pm Eastern)."
+          : "We received your request ✅ We’ll contact you as soon as possible (typically 9am–9pm Eastern).";
+
+        // ✅ Meta conversion event (only on successful homeowner submission)
+      if (window.fbq) fbq('track', 'Lead');
+        thanksMsg.textContent = fastMsg;
+        thanks.style.display = "block";
+        form.reset();
+        return;
+      }
+
+      throw new Error((data && data.message) ? data.message : ("Unexpected response: " + text));
+
+    } catch (err) {
+      console.log("Lead submit error:", err);
+      errorMsgEl.textContent = "Error: " + (err && err.message ? err.message : "Unknown error");
+      errorBox.style.display = "block";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send my info";
+    }
+  });
+</script>
+
+</body>
+</html>
