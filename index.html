@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tourbillion LLC | Solar Consultation</title>
-  <meta name="description" content="Tourbillion LLC partners with Palmetto Solar to help homeowners explore solar savings with a quick, no-pressure consultation." />
+  <title>Tourbillion Energy | Solar Consultation</title>
+  <meta name="description" content="PPL, Met-Ed, Penelec & WestPenn rates keep rising. See what Northern Pennsylvania homeowners are saving with solar — free estimate, no pressure." />
     <meta name="facebook-domain-verification" content="w5mwz1ve3a9wzb39n04date6hl76gy" />
     <!-- Meta Pixel Code -->
-    <script>
+        <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -155,6 +155,7 @@
       border:1px solid var(--border);
       background:rgba(8,12,24,.55);
       color:var(--text);outline:none;
+      font-size:16px;
     }
     textarea{min-height:92px;resize:vertical}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -342,6 +343,7 @@
       .contactline{justify-content:flex-start}
       .nav{justify-content:flex-start}
       .hero{grid-template-columns:1fr}
+      .hero .lead{order:-1}
       .section{grid-template-columns:1fr}
       .content{grid-template-columns:1fr}
       h1{font-size:1.85rem}
@@ -349,6 +351,28 @@
       .sticky{display:block}
       body{padding-bottom:70px;}
     }
+    /* Google Places autocomplete dropdown */
+    .pac-container {
+      background:#0f1a32;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;
+      margin-top:4px;
+      font-family:inherit;
+      z-index:99999 !important;
+    }
+    .pac-item {
+      color:#eef2ff;
+      padding:10px 14px;
+      border-top:1px solid rgba(255,255,255,.08);
+      cursor:pointer;
+      font-size:.95rem;
+    }
+    .pac-item:first-child { border-top:none; border-radius:12px 12px 0 0; }
+    .pac-item:last-child { border-radius:0 0 12px 12px; }
+    .pac-item:hover, .pac-item-selected { background:rgba(244,162,97,.15); }
+    .pac-item-query { color:#f4a261; font-weight:600; }
+    .pac-matched { color:#f4a261; }
+    .pac-icon { display:none; }
   </style>
   
 </head>
@@ -357,31 +381,86 @@
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <img src="6EC4B882-FBD0-4863-99FE-196F09A8E8DA.png" alt="Tourbillion Energy logo">
+        <img src="logo.png" alt="Tourbillion Energy logo" style="width:56px;height:auto;border:none;background:none;padding:0;">
         <div class="text">
-          <strong>Tourbillion LLC</strong>
-          <span>Partnered with Palmetto Solar</span>
+          <strong>Tourbillion Energy</strong>
+          <span>Energy Consultation Services</span>
         </div>
       </div>
 
       <div class="rightbar">
-        <div class="contactline">
-          <span><strong>Email:</strong> <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a></span>
-          <span><strong>Phone:</strong> <a href="tel:+17176687720">717-668-7720</a></span>
-        </div>
-        <div class="nav">
-          <a class="pill" href="#how">How it works</a>
-          <a class="pill" href="#benefits">Benefits</a>
-          <a class="pill primary" href="#lead">Get a free estimate</a>
-        </div>
       </div>
     </div>
 
     <div class="hero">
+      <div class="card lead" id="lead">
+        <h2>Find Out If Your Home Qualifies</h2>
+        <p>
+          Leave your info below and Tyler will personally reach out — usually within the hour during business hours.
+        </p>
+
+        <form id="leadForm" method="post" action="javascript:void(0)">
+          <!-- Honeypot field (spam trap): humans won't fill this -->
+          <div style="position:absolute; left:-5000px; opacity:0; height:0; overflow:hidden;">
+            <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <label for="occupancy">Are you a homeowner or renter?</label>
+          <select id="occupancy" name="occupancy" required>
+            <option value="" selected disabled>Select one…</option>
+            <option value="homeowner">Homeowner</option>
+            <option value="renter">Renter</option>
+          </select>
+
+          <label for="name">Full Name</label>
+          <input id="name" name="name" placeholder="John Smith" required />
+
+          <label for="phone">Phone</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputmode="numeric"
+            autocomplete="tel-national"
+            placeholder="(555) 555-5555"
+            required
+          />
+
+          <label for="zip">ZIP Code</label>
+          <input id="zip" name="zip" placeholder="12345" required />
+
+          <label for="address">Home Address <span style="color:var(--muted);font-weight:400;font-size:.85rem;">(optional — helps us check roof/sun exposure)</span></label>
+          <input id="address" name="address" placeholder="Start typing your address..." autocomplete="off" />
+
+          <button class="btn" type="submit" id="submitBtn">Get My Free Savings Estimate →</button>
+
+          <div class="fine">
+            By submitting, you agree Tourbillion Energy may contact you by call/text/email. Msg/data rates may apply.
+            This request is not a contract and carries no obligation.
+          </div>
+
+          <div id="thanks" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(53,208,186,.10);">
+            <strong>Thanks — we received your request ✅</strong>
+            <div id="thanksMsg" style="color:var(--muted);margin-top:4px;">
+              We'll reach out to confirm details and answer questions.
+            </div>
+          </div>
+
+          <div id="errorBox" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid rgba(244,162,97,.5);background:rgba(244,162,97,.12);">
+            <strong>Hmm — something didn't send.</strong>
+            <div style="color:var(--muted);margin-top:4px;">
+              Please try again, or contact us directly:
+              <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
+              <a href="tel:+17172561092">(717) 256-1092</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
       <div class="card">
-        <h1>Explore solar savings with a quick, no-pressure consultation.</h1>
+        <h1>Electric Rates Keep Rising — Lock In Your Savings with Solar</h1>
         <p class="sub">
-          Tourbillion LLC helps homeowners understand whether solar makes sense for their home — with clear answers and a simple process.
+          Find out if your home qualifies and get a real savings number — free, no pressure, no commitment.
         </p>
 
         <div class="badges">
@@ -408,90 +487,35 @@
         </div>
 
         <ul class="bullets">
-          <li><span class="check">✓</span><span><strong>Get the numbers first:</strong> we’ll review roof fit, usage, and incentives.</span></li>
-          <li><span class="check">✓</span><span><strong>No upfront cost options:</strong> explore programs that don’t require a big initial payment.</span></li>
-          <li><span class="check">✓</span><span><strong>Budget certainty:</strong> move away from unpredictable rate changes over time.</span></li>
+          <li><span class="check">✓</span><span><strong>Lock in a lower rate:</strong> stop paying whatever the utility decides to charge next year.</span></li>
+          <li><span class="check">✓</span><span><strong>$0 down options available:</strong> no upfront payment required to get started.</span></li>
+          <li><span class="check">✓</span><span><strong>Get the real numbers first:</strong> we'll review your roof, usage, and current rate before you decide anything.</span></li>
         </ul>
       </div>
+    </div>
 
-      <div class="card lead" id="lead">
-        <h2>Request a free estimate</h2>
-        <p>
-          If you came from a Facebook/Instagram lead ad, submitting the form there is perfect.
-          If you prefer, you can leave your info here and we’ll contact you.
+    <!-- Trust section -->
+    <div class="card" style="margin-top:18px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;">
+      <img src="tyler-family.jpg" alt="Tyler and his family" style="width:160px;height:160px;object-fit:cover;border-radius:16px;flex-shrink:0;">
+      <div>
+        <strong style="font-size:1.05rem;display:block;margin-bottom:6px;">Hi, I'm Tyler.</strong>
+        <p style="margin:0;color:var(--muted);line-height:1.6;">
+          As a local energy consultant, I help families across Northern Pennsylvania understand their solar options and protect their homes from rising electric rates.
+          When you submit, you'll hear from me personally — not a call center.
         </p>
-
-        <form id="leadForm">
-          <!-- Honeypot field (spam trap): humans won't fill this -->
-          <div style="position:absolute; left:-5000px; opacity:0; height:0; overflow:hidden;">
-            <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
-          </div>
-
-          <label for="occupancy">Are you a homeowner or renter?</label>
-          <select id="occupancy" name="occupancy" required>
-            <option value="" selected disabled>Select one…</option>
-            <option value="homeowner">Homeowner</option>
-            <option value="renter">Renter</option>
-          </select>
-
-          <label for="name">Full Name</label>
-          <input id="name" name="name" placeholder="John Smith" required />
-
-          <div class="row">
-            <div>
-              <label for="phone">Phone</label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                inputmode="numeric"
-                autocomplete="tel-national"
-                placeholder="(555) 555-5555"
-                required
-                maxlength="14"
-                pattern="^\(\d{3}\) \d{3}-\d{4}$"
-                title="Enter a valid US phone number: (555) 555-5555"
-              />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@email.com" required />
-            </div>
-          </div>
-
-          <label for="address">Home Address</label>
-          <input id="address" name="address" placeholder="123 Main St, City, State" />
-
-          <label for="zip">ZIP Code</label>
-          <input id="zip" name="zip" placeholder="12345" />
-
-          <label for="note">Anything we should know?</label>
-          <textarea id="note" name="note" placeholder="Example: best time to call, roof concerns, etc."></textarea>
-
-          <button class="btn" type="submit" id="submitBtn">Send my info</button>
-
-          <div class="fine">
-            By submitting, you agree Tourbillion LLC may contact you by call/text/email. Msg/data rates may apply.
-            This request is not a contract and carries no obligation.
-          </div>
-
-          <div id="thanks" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid var(--border);background:rgba(53,208,186,.10);">
-            <strong>Thanks — we received your request ✅</strong>
-            <div id="thanksMsg" style="color:var(--muted);margin-top:4px;">
-              We’ll reach out to confirm details and answer questions.
-            </div>
-          </div>
-
-          <div id="errorBox" style="display:none;margin-top:12px;padding:12px;border-radius:14px;border:1px solid rgba(244,162,97,.5);background:rgba(244,162,97,.12);">
-            <strong>Hmm — something didn’t send.</strong>
-            <div style="color:var(--muted);margin-top:4px;">
-              Please try again, or contact us directly:
-              <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
-              <a href="tel:+17176687720">717-668-7720</a>
-            </div>
-          </div>
-        </form>
       </div>
+    </div>
+
+    <!-- Review section -->
+    <div class="card" style="margin-top:14px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="color:#f4b942;font-size:1.2rem;letter-spacing:2px;">★★★★★</div>
+        <span style="color:var(--muted);font-size:.9rem;">Google Review · 2 months ago</span>
+      </div>
+      <p style="margin:0 0 10px;font-size:1rem;line-height:1.65;color:var(--text);">
+        "Tyler took a great deal of time not only answering our questions but troubleshooting some document issue with us. He was honest and gave us no nonsense or runaround, and he knew what the company was offering well enough to help tailor our plan to us. He also helped us plan out future expansions."
+      </p>
+      <span style="color:var(--muted);font-size:.9rem;font-weight:700;">— Laura K., Local Guide</span>
     </div>
 
     <!-- More detailed info (bottom) -->
@@ -504,10 +528,9 @@
             <path d="M7 6h4M7 10h4M7 14h4M7 18h4" stroke="currentColor" stroke-width="2"/>
           </svg>
         </div>
-        <h3>Palmetto Solar overview</h3>
+        <h3>How solar works for your home</h3>
         <p>
-          Palmetto Solar is an established solar company with regional presence and local support.
-          They are vertically integrated — meaning the work is handled directly rather than subcontracted out.
+          We work with an established regional installer — meaning the work is handled directly rather than subcontracted out. Quality equipment, warranty-backed.
         </p>
       </div>
 
@@ -592,7 +615,7 @@
 
       <details>
         <summary>Do you subcontract the install?</summary>
-        <p>Palmetto Solar is vertically integrated, meaning installation and workmanship are handled directly under their process and coverage.</p>
+        <p>Installation and workmanship are handled directly by our installer — not subcontracted out to third parties.</p>
       </details>
 
       <details>
@@ -607,13 +630,17 @@
     </div>
 
     <footer>
-      © 2026 Tourbillion LLC. Partnered with Palmetto Solar. Savings vary by home, utility rates, system design, and incentives.
+      © 2026 Tourbillion Energy. Savings vary by home, utility rates, system design, and incentives.
       This page is for information and lead generation only.
+      <div style="margin-top:10px;">
+        <a href="tel:+17172561092" style="color:var(--accent);text-decoration:none;margin-right:16px;">📞 (717) 256-1092</a>
+        <a href="mailto:tyler@tourbillionenergy.com" style="color:var(--accent);text-decoration:none;">✉ tyler@tourbillionenergy.com</a>
+      </div>
     </footer>
   </div>
 
   <div class="sticky">
-    <a href="#lead">Get a free estimate</a>
+    <a href="#lead">Get My Free Savings Estimate →</a>
   </div>
 
   <!-- Video Modal -->
@@ -647,287 +674,190 @@
     </div>
   </div>
 
+
+
+  <p style="text-align:center; margin-top:40px; color:rgba(238,242,255,.5); font-size:.85rem;">
+    <a href="/privacy-policy.html" style="color:rgba(238,242,255,.5);">Privacy Policy</a>
+  </p>
+
 <script>
-  // ✅ Paste your actual Apps Script Web App /exec URL here:
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwgJ1czBkad75OXkxhkXd401qD2h5IRkfkOzVSQWA8JfIlcCFHXYquHUJ5AdJ_S_JUI/exec";
+var scriptURL = "https://script.google.com/macros/s/AKfycbwgJ1czBkad75OXkxhkXd401qD2h5IRkfkOzVSQWA8JfIlcCFHXYquHUJ5AdJ_S_JUI/exec";
+var YT_ID = "3u5DALLHZDI";
+var YT_EMBED_MUTED = "https://www.youtube.com/embed/" + YT_ID + "?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1";
 
-  // YouTube renter video
-  const YT_ID = "3u5DALLHZDI";
-  const YT_EMBED_MUTED = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&rel=0&playsinline=1&enablejsapi=1`;
-
-  // -----------------------------
-// ✅ US Phone: strict validation + formatting
-// Rules enforced:
-// - US-only (10 digits)
-// - Area code first digit 2–9
-// - Exchange (middle 3) first digit 2–9
-// - Auto-format to: (XXX) XXX-XXXX
-// - Block non-numeric keystrokes (while still allowing backspace/arrows/etc.)
-// -----------------------------
-
-function phoneDigits(raw) {
-  return (raw || "").replace(/\D/g, "");
+function phoneDigits(raw) { return String(raw == null ? "" : raw).replace(/\D/g, ""); }
+function isValidUS10(d) {
+  if (!d || d.length !== 10) return false;
+  return (d.charCodeAt(0)-48) >= 2 && (d.charCodeAt(3)-48) >= 2;
 }
-
-function isValidUS10(digits) {
-  if (!digits || digits.length !== 10) return false;
-
-  // NANP rules (common enforcement):
-  // area code NXX where N=2–9
-  // central office (exchange) NXX where N=2–9
-  const a0 = digits.charCodeAt(0) - 48; // first digit
-  const e0 = digits.charCodeAt(3) - 48; // 4th digit
-  if (a0 < 2 || a0 > 9) return false;
-  if (e0 < 2 || e0 > 9) return false;
-
-  return true;
-}
-
 function formatUSPhone(digits) {
-  // digits: string of 0-10 digits
-  const d = (digits || "").slice(0, 10);
-  const a = d.slice(0, 3);
-  const b = d.slice(3, 6);
-  const c = d.slice(6, 10);
-
-  if (d.length <= 3) return a ? `(${a}` : "";
-  if (d.length <= 6) return `(${a}) ${b}`;
-  return `(${a}) ${b}-${c}`;
+  var d = String(digits || "").slice(0, 10);
+  var a = d.slice(0,3), b = d.slice(3,6), c = d.slice(6,10);
+  if (d.length <= 3) return a ? "(" + a : "";
+  if (d.length <= 6) return "(" + a + ") " + b;
+  return "(" + a + ") " + b + "-" + c;
 }
-
-// Allow only digits + navigation/edit keys
 function isAllowedKey(e) {
-  if (e.ctrlKey || e.metaKey) return true; // allow copy/paste/select all
-  const k = e.key;
-
-  // allow navigation/edit keys
-  const allowed = [
-    "Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown",
-    "Home", "End", "Tab", "Enter"
-  ];
-  if (allowed.includes(k)) return true;
-
-  // allow digits only
-  return /^[0-9]$/.test(k);
+  if (e.ctrlKey || e.metaKey) return true;
+  return ["Backspace","Delete","ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End","Tab","Enter"].includes(e.key) || /^[0-9]$/.test(e.key);
 }
-  const form = document.getElementById("leadForm");
-  const thanks = document.getElementById("thanks");
-  const thanksMsg = document.getElementById("thanksMsg");
-  const errorBox = document.getElementById("errorBox");
-  const submitBtn = document.getElementById("submitBtn");
-  const errorMsgEl = document.querySelector("#errorBox div");
 
-  // ✅ Phone input behavior
-const phoneEl = document.getElementById("phone");
-
-phoneEl.addEventListener("keydown", (e) => {
-  if (!isAllowedKey(e)) e.preventDefault();
-});
-
-// Handles typing, paste, autofill, mobile input, etc.
-phoneEl.addEventListener("input", () => {
-  const d = phoneDigits(phoneEl.value);
-  phoneEl.value = formatUSPhone(d);
-});
-
-// Extra paste cleanup (optional but nice)
-phoneEl.addEventListener("paste", (e) => {
-  e.preventDefault();
-  const text = (e.clipboardData || window.clipboardData).getData("text") || "";
-  const d = phoneDigits(text).slice(0, 10);
-  phoneEl.value = formatUSPhone(d);
-});
-  
-  // Modal elements
-  const videoOverlay = document.getElementById("videoOverlay");
-  const ytFrame = document.getElementById("ytFrame");
-  const closeVideoBtn = document.getElementById("closeVideoBtn");
-  const unmuteOverlay = document.getElementById("unmuteOverlay");
-  const unmuteBtn = document.getElementById("unmuteBtn");
-
-  function inEasternWindow9to9() {
-    // Determine current hour in America/New_York without external libs
-    try {
-      const parts = new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        hour: "numeric",
-        hour12: false
-      }).formatToParts(new Date());
-      const hour = Number(parts.find(p => p.type === "hour").value);
-      return hour >= 9 && hour < 21;
-    } catch (e) {
-      // Fallback: use local time (still usually Eastern for you)
-      const hour = new Date().getHours();
-      return hour >= 9 && hour < 21;
-    }
-  }
-
-  function openVideoModal() {
-    ytFrame.src = YT_EMBED_MUTED;
-    videoOverlay.style.display = "flex";
-    requestAnimationFrame(() => videoOverlay.classList.add("show"));
-    videoOverlay.setAttribute("aria-hidden", "false");
-    unmuteOverlay.style.display = "flex";
-  }
-
-  function closeVideoModal() {
-    videoOverlay.classList.remove("show");
-    videoOverlay.setAttribute("aria-hidden", "true");
-    setTimeout(() => {
-      videoOverlay.style.display = "none";
-      ytFrame.src = "";
-    }, 220);
-  }
-
-  closeVideoBtn.addEventListener("click", closeVideoModal);
-  videoOverlay.addEventListener("click", (e) => {
-    if (e.target === videoOverlay) closeVideoModal();
+var phoneEl = document.getElementById("phone");
+if (phoneEl) {
+  phoneEl.addEventListener("keydown", function(e) { if (!isAllowedKey(e)) e.preventDefault(); });
+  ["input","change","blur"].forEach(function(evt) {
+    phoneEl.addEventListener(evt, function() {
+      var d = phoneDigits(phoneEl.value);
+      phoneEl.value = formatUSPhone(d);
+    });
   });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && videoOverlay.style.display === "flex") closeVideoModal();
-  });
-
-  // Tap to unmute + volume ramp
-  unmuteBtn.addEventListener("click", () => {
-    try {
-      ytFrame.contentWindow.postMessage(JSON.stringify({
-        event: "command",
-        func: "unMute",
-        args: []
-      }), "*");
-
-      let currentVolume = 10; // start gentle
-      ytFrame.contentWindow.postMessage(JSON.stringify({
-        event: "command",
-        func: "setVolume",
-        args: [currentVolume]
-      }), "*");
-
-      ytFrame.contentWindow.postMessage(JSON.stringify({
-        event: "command",
-        func: "playVideo",
-        args: []
-      }), "*");
-
-      const targetVolume = 60;
-      const step = 5;
-      const intervalMs = 150;
-
-      const rampInterval = setInterval(() => {
-        currentVolume += step;
-        ytFrame.contentWindow.postMessage(JSON.stringify({
-          event: "command",
-          func: "setVolume",
-          args: [currentVolume]
-        }), "*");
-
-        if (currentVolume >= targetVolume) clearInterval(rampInterval);
-      }, intervalMs);
-
-    } catch (_) {}
-
-    unmuteOverlay.style.display = "none";
-  });
-
-  form.addEventListener("submit", async (e) => {
+  phoneEl.addEventListener("paste", function(e) {
     e.preventDefault();
-    thanks.style.display = "none";
-    errorBox.style.display = "none";
-
-    errorMsgEl.innerHTML = `Please try again, or contact us directly:
-      <a href="mailto:tyler@tourbillionenergy.com">tyler@tourbillionenergy.com</a> •
-      <a href="tel:+17176687720">717-668-7720</a>`;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending...";
-
-    const occupancy = document.getElementById("occupancy").value;
-    const websiteTrap = document.getElementById("website").value.trim();
-    // ✅ Strict phone validation on submit
-const rawPhone = document.getElementById("phone").value;
-const digits = phoneDigits(rawPhone);
-
-// Make sure it is exactly valid US 10-digit with NANP rules
-if (!isValidUS10(digits)) {
-  errorBox.style.display = "block";
-  errorMsgEl.textContent =
-    "Please enter a valid US 10-digit phone number (example: (555) 555-5555).";
-  document.getElementById("phone").focus();
-  submitBtn.disabled = false;
-  submitBtn.textContent = "Send my info";
-  return;
+    var t = String((e.clipboardData || window.clipboardData).getData("text") || "");
+    phoneEl.value = formatUSPhone(phoneDigits(t).slice(0,10));
+  });
 }
 
-    // If bot filled honeypot, silently "succeed" but do nothing
-    if (websiteTrap) {
-      thanksMsg.textContent = "Thanks — we received your request ✅";
+var videoOverlay = document.getElementById("videoOverlay");
+var ytFrame = document.getElementById("ytFrame");
+var closeVideoBtn = document.getElementById("closeVideoBtn");
+var unmuteOverlay = document.getElementById("unmuteOverlay");
+var unmuteBtn = document.getElementById("unmuteBtn");
+
+function inEasternWindow9to9() {
+  try {
+    var parts = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",hour:"numeric",hour12:false}).formatToParts(new Date());
+    var hour = Number(parts.find(function(p){return p.type==="hour";}).value);
+    return hour >= 9 && hour < 21;
+  } catch(e) { var h = new Date().getHours(); return h>=9&&h<21; }
+}
+function openVideoModal() {
+  ytFrame.src = YT_EMBED_MUTED;
+  videoOverlay.style.display = "flex";
+  requestAnimationFrame(function(){ videoOverlay.classList.add("show"); });
+  videoOverlay.setAttribute("aria-hidden","false");
+  unmuteOverlay.style.display = "flex";
+}
+function closeVideoModal() {
+  videoOverlay.classList.remove("show");
+  videoOverlay.setAttribute("aria-hidden","true");
+  setTimeout(function(){ videoOverlay.style.display="none"; ytFrame.src=""; }, 220);
+}
+closeVideoBtn.addEventListener("click", closeVideoModal);
+videoOverlay.addEventListener("click", function(e){ if(e.target===videoOverlay) closeVideoModal(); });
+document.addEventListener("keydown", function(e){ if(e.key==="Escape"&&videoOverlay.style.display==="flex") closeVideoModal(); });
+unmuteBtn.addEventListener("click", function(){
+  try {
+    ytFrame.contentWindow.postMessage(JSON.stringify({event:"command",func:"unMute",args:[]}),"*");
+    var vol=10;
+    ytFrame.contentWindow.postMessage(JSON.stringify({event:"command",func:"setVolume",args:[vol]}),"*");
+    ytFrame.contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo",args:[]}),"*");
+    var ramp=setInterval(function(){
+      vol+=5;
+      ytFrame.contentWindow.postMessage(JSON.stringify({event:"command",func:"setVolume",args:[vol]}),"*");
+      if(vol>=60)clearInterval(ramp);
+    },150);
+  } catch(_){}
+  unmuteOverlay.style.display="none";
+});
+
+var form = document.getElementById("leadForm");
+var thanks = document.getElementById("thanks");
+var thanksMsg = document.getElementById("thanksMsg");
+var errorBox = document.getElementById("errorBox");
+var errorMsgEl = document.querySelector("#errorBox div");
+var submitBtn = document.getElementById("submitBtn");
+
+if (form) { form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  thanks.style.display = "none";
+  errorBox.style.display = "none";
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  var websiteTrap = document.getElementById("website").value.trim();
+  var occupancy = document.getElementById("occupancy").value;
+  var digits = phoneDigits(document.getElementById("phone").value);
+
+  if (!isValidUS10(digits)) {
+    errorBox.style.display = "block";
+    errorMsgEl.textContent = "Please enter a valid 10-digit US phone number, e.g. (555) 555-5555.";
+    document.getElementById("phone").focus();
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Get My Free Savings Estimate →";
+    return;
+  }
+  if (websiteTrap) {
+    thanks.style.display = "block";
+    thanksMsg.textContent = "Thanks — we received your request ✅";
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Get My Free Savings Estimate →";
+    return;
+  }
+  if (occupancy === "renter") {
+    openVideoModal();
+    thanks.style.display = "block";
+    thanksMsg.textContent = "Thanks! Since you’re renting, here’s a quick option to lower your electric bill.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Get My Free Savings Estimate →";
+    return;
+  }
+
+  var payload = new URLSearchParams({
+    name: document.getElementById("name").value.trim(),
+    phone: digits,
+    zip: document.getElementById("zip").value.trim(),
+    address: document.getElementById("address").value.trim()
+  });
+
+  try {
+    var res = await fetch(scriptURL, { method: "POST", body: payload });
+    var text = await res.text();
+    if (text.trim().startsWith("<!DOCTYPE") || text.trim().startsWith("<html")) {
+      throw new Error("Apps Script config error — check deployment settings.");
+    }
+    var data = null;
+    try { data = JSON.parse(text); } catch(_){}
+    if (res.ok && data && data.result === "success") {
+      if (window.fbq) fbq("track", "Lead");
+      thanksMsg.textContent = inEasternWindow9to9()
+        ? "We received your request ✅ You’ll receive a call or text within the next 5 minutes (9am–9pm Eastern)."
+        : "We received your request ✅ We’ll contact you as soon as possible (typically 9am–9pm Eastern).";
       thanks.style.display = "block";
       form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send my info";
       return;
     }
+    throw new Error((data && data.message) ? data.message : "Unexpected response: " + text);
+  } catch(err) {
+    errorMsgEl.innerHTML = "Please try again, or contact us: <a href='mailto:tyler@tourbillionenergy.com'>tyler@tourbillionenergy.com</a> &bull; <a href='tel:+17172561092'>(717) 256-1092</a>";
+    errorBox.style.display = "block";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Get My Free Savings Estimate \u2192";
+  }
+}); } // end if(form)
+</script>
 
-    // Renter flow: show video + CTA, DO NOT send to Apps Script
-    if (occupancy === "renter") {
-      openVideoModal();
-      // Also show a friendly confirmation (optional)
-      thanksMsg.textContent = "Thanks! Since you’re renting, here’s a quick option to lower your electric bill.";
-      thanks.style.display = "block";
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send my info";
-      return;
-    }
-
-    // Homeowner flow: submit to Apps Script
-    const payload = new URLSearchParams({
-      website: websiteTrap,
-      occupancy: occupancy,
-      name: document.getElementById("name").value.trim(),
-      phone: digits,
-      email: document.getElementById("email").value.trim(),
-      address: document.getElementById("address").value.trim(),
-      zip: document.getElementById("zip").value.trim(),
-      note: document.getElementById("note").value.trim()
-    });
-
-    try {
-      const res = await fetch(scriptURL, { method: "POST", body: payload });
-      const text = await res.text();
-      const t = text.trim();
-
-      // If Apps Script returns HTML, it's usually deployment/access settings
-      if (t.startsWith("<!DOCTYPE") || t.startsWith("<html")) {
-        throw new Error("Apps Script returned an HTML page. Check deployment: Execute as 'Me' and access 'Anyone', then redeploy.");
-      }
-
-      let data = null;
-      try { data = JSON.parse(text); } catch (_) {}
-
-      if (res.ok && data && data.result === "success") {
-        const fastMsg = inEasternWindow9to9()
-          ? "We received your request ✅ You’ll receive a call or text within the next 5 minutes (9am–9pm Eastern)."
-          : "We received your request ✅ We’ll contact you as soon as possible (typically 9am–9pm Eastern).";
-
-        // ✅ Meta conversion event (only on successful homeowner submission)
-      if (window.fbq) fbq('track', 'Lead');
-        thanksMsg.textContent = fastMsg;
-        thanks.style.display = "block";
-        form.reset();
-        return;
-      }
-
-      throw new Error((data && data.message) ? data.message : ("Unexpected response: " + text));
-
-    } catch (err) {
-      console.log("Lead submit error:", err);
-      errorMsgEl.textContent = "Error: " + (err && err.message ? err.message : "Unknown error");
-      errorBox.style.display = "block";
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send my info";
+<!-- Google Places Autocomplete -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8hW-T2jGUuStysNdkWgSyzfdnHIGtDPA&libraries=places" async defer></script>
+<script>
+window.addEventListener("load", function() {
+  var addressEl = document.getElementById("address");
+  if (!addressEl) return;
+  if (typeof google === "undefined" || !google.maps || !google.maps.places) return;
+  var autocomplete = new google.maps.places.Autocomplete(addressEl, {
+    types: ["address"],
+    componentRestrictions: { country: "us" },
+    fields: ["formatted_address"]
+  });
+  autocomplete.addListener("place_changed", function() {
+    var place = autocomplete.getPlace();
+    if (place && place.formatted_address) {
+      addressEl.value = place.formatted_address;
     }
   });
+});
 </script>
 
 </body>
